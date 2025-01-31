@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.0.1](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.0.0...v1.0.1) (2025-01-31)
+
+### Bug Fixes
+
+* added npm version in engines field ([1a9e594](https://github.com/Forsakringskassan/sass-module-importer/commit/1a9e5942b03c22dcfd5f7c5e820085981cc841e1))
+
 ## 1.0.0 (2025-01-17)
 
 ### Features
