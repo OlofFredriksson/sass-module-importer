@@ -66,5 +66,9 @@
   },
   "engines": {
     "node": ">20.0.0"
+  },
+  "dependencies": {
+    "resolve-package-path": "^4.0.3",
+    "resolve.exports": "^2.0.3"
   }
 }
