@@ -1,9 +1,11 @@
 import path from "node:path";
-import fs from "node:fs";
+import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { createRequire } from "node:module";
+
 import resolvePackagePath from "resolve-package-path";
 import { exports, legacy } from "resolve.exports";
+
 import { getPackageNameFromPath } from "./parsePackageName";
 
 const require = createRequire(import.meta.url);
@@ -16,7 +18,6 @@ export const moduleImporter = {
         }
 
         const packageName = getPackageNameFromPath(findUrl);
-
         const fileName = findUrl.split(packageName)[1];
         const packagePath = resolvePackagePath(packageName, process.cwd());
 
@@ -26,17 +27,16 @@ export const moduleImporter = {
         }
 
         const packageJson = JSON.parse(
-            fs.readFileSync(packagePath, { encoding: "utf-8" }),
+            readFileSync(packagePath, { encoding: "utf-8" }),
         );
 
         const directory = path.dirname(packagePath);
 
         /* Check exports */
         try {
-            const match = exports(packageJson, fileName, {
+            const match = exports(packageJson, fileName.substring(1), {
                 conditions: ["sass"],
             });
-
             if (match && match.length === 1) {
                 return new URL(pathToFileURL(path.join(directory, match[0])));
             }
@@ -44,13 +44,12 @@ export const moduleImporter = {
             /* empty */
         }
 
-        /* Check main fields */
-        const match = legacy(packageJson, { fields: ["sass", "main"] });
-        console.log(match);
-
-        if (match) {
-            console.log(path.join(directory, match));
-            return new URL(pathToFileURL(path.join(directory, match)));
+        /* Check main fields (only applies if only package path is given) */
+        if (!fileName) {
+            const match = legacy(packageJson, { fields: ["sass", "main"] });
+            if (match) {
+                return new URL(pathToFileURL(path.join(directory, match)));
+            }
         }
 
         /* Direct link */

@@ -5,6 +5,10 @@ exports[`should be able to transform scss using package with exports 1`] = `
   color: pink;
 }
 
+body {
+  color: orange;
+}
+
 .foo {
   color: green;
 }"

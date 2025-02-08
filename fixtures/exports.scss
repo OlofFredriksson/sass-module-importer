@@ -1,4 +1,5 @@
 @import "@forsakringskassan/package-with-exports";
+@import "@forsakringskassan/package-with-exports/anotherFile";
 
 .foo {
     color: green;
