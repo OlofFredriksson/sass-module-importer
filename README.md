@@ -7,6 +7,8 @@ Import sass files from packages in `node_modules/`, works with and without webpa
 @import "~@fkui/design/anotherFile";
 ```
 
+This plugin can also be used to include Sass files from a library's `main` or `exports` field.
+
 ## Installation
 
 `npm install --save-dev @forsakringskassan/sass-module-importer`
