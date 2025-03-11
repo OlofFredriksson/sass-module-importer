@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.1.0](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.0.1...v1.1.0) (2025-03-11)
+
+### Features
+
+* import from main field and exports ([6c4af3c](https://github.com/Forsakringskassan/sass-module-importer/commit/6c4af3ce9ac3f4e197fe345f0caea12efa0ff124))
+
 ## [1.0.1](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.0.0...v1.0.1) (2025-01-31)
 
 ### Bug Fixes
