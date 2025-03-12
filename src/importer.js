@@ -18,7 +18,7 @@ export const moduleImporter = {
         }
 
         const packageName = getPackageNameFromPath(findUrl);
-        const fileName = findUrl.split(packageName)[1];
+        const filePath = findUrl.split(packageName)[1];
         const packagePath = resolvePackagePath(packageName, process.cwd());
 
         /* Validate if existing package */
@@ -34,7 +34,7 @@ export const moduleImporter = {
 
         /* Check exports */
         try {
-            const match = exports(packageJson, fileName.substring(1), {
+            const match = exports(packageJson, filePath.substring(1), {
                 conditions: ["sass"],
             });
             if (match && match.length === 1) {
@@ -47,7 +47,7 @@ export const moduleImporter = {
         }
 
         /* Check main fields (only applies if only package path is given) */
-        if (!fileName) {
+        if (!filePath) {
             const match = legacy(packageJson, { fields: ["sass", "main"] });
             if (match) {
                 return new URL(
@@ -57,6 +57,9 @@ export const moduleImporter = {
         }
 
         /* Direct link */
+        const directory = path.dirname(filePath);
+        const fileName = path.basename(filePath);
+
         const search = [
             `${fileName}.css`,
             `${fileName}.scss`,
@@ -66,7 +69,11 @@ export const moduleImporter = {
 
         for (const variant of search) {
             try {
-                const moduleName = path.posix.join(moduleDirectory, variant);
+                const moduleName = path.posix.join(
+                    moduleDirectory,
+                    directory,
+                    variant,
+                );
                 const resolved = require.resolve(moduleName);
                 return new URL(pathToFileURL(resolved));
             } catch (err) {

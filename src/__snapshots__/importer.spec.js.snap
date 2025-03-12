@@ -44,6 +44,10 @@ body {
   color: greenyellow;
 }
 
+.reset {
+  color: inherit;
+}
+
 .foo {
   color: green;
 }"

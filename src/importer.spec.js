@@ -26,6 +26,7 @@ it("should be able to transform scss using package without exports and main fiel
     const append = `
         @use "@forsakringskassan/a-fancy-package/src/default.scss";
         @use "@forsakringskassan/a-fancy-package/src/extra.scss";
+        @use "@forsakringskassan/a-fancy-package/src/reset";
     `;
     expect(init(append)).toMatchSnapshot();
 });
