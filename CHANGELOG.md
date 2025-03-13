@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.1.1](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.1.0...v1.1.1) (2025-03-13)
+
+### Bug Fixes
+
+* should be able to find files starting with underline ([bf080ce](https://github.com/Forsakringskassan/sass-module-importer/commit/bf080ce1c7dd8c59ea884aaf32a384fd03e2f783))
+
 ## [1.1.0](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.0.1...v1.1.0) (2025-03-11)
 
 ### Features
