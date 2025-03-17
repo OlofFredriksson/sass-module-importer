@@ -8,10 +8,16 @@ import { exports, legacy } from "resolve.exports";
 
 import { getPackageNameFromPath } from "./parsePackageName";
 
+const { findUpPackagePath } = resolvePackagePath;
 const require = createRequire(import.meta.url);
 const WEBPACK_NODE_MODULE_PREFIX = "~";
+
+let selfPackageJson = null;
+let selfPackageJsonPath = null;
 export const moduleImporter = {
     findFileUrl(url) {
+        setSelfPackage();
+
         let findUrl = url;
         if (url.startsWith(WEBPACK_NODE_MODULE_PREFIX)) {
             findUrl = url.substring(1);
@@ -19,16 +25,27 @@ export const moduleImporter = {
 
         const packageName = getPackageNameFromPath(findUrl);
         const filePath = findUrl.split(packageName)[1];
-        const packagePath = resolvePackagePath(packageName, process.cwd());
 
-        /* Validate if existing package */
-        if (!packageName || !packagePath) {
+        /* Validate if packageName is valid */
+        if (!packageName) {
             return null;
         }
 
-        const packageJson = JSON.parse(
-            readFileSync(packagePath, { encoding: "utf-8" }),
-        );
+        let packageJson = selfPackageJson;
+        let packagePath = selfPackageJsonPath;
+
+        if (selfPackageJson.name !== packageName) {
+            packagePath = resolvePackagePath(packageName, process.cwd());
+
+            /* Validate if existing package */
+            if (!packagePath) {
+                return null;
+            }
+
+            packageJson = JSON.parse(
+                readFileSync(packagePath, { encoding: "utf-8" }),
+            );
+        }
 
         const moduleDirectory = path.dirname(packagePath);
 
@@ -85,3 +102,12 @@ export const moduleImporter = {
         return null;
     },
 };
+
+function setSelfPackage() {
+    if (!selfPackageJson) {
+        selfPackageJsonPath = findUpPackagePath(process.cwd());
+        selfPackageJson = JSON.parse(
+            readFileSync(selfPackageJsonPath, { encoding: "utf-8" }),
+        );
+    }
+}
