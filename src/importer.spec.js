@@ -52,3 +52,10 @@ it("should be able to transform scss using package with sass fields", () => {
     `;
     expect(init(append)).toMatchSnapshot();
 });
+
+it("should be able to transform scss when package contains reference to itself", () => {
+    const append = `
+        @use "@forsakringskassan/self-package/src/main";
+    `;
+    expect(init(append)).toMatchSnapshot();
+});
