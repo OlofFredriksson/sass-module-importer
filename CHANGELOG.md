@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.1.2](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.1.1...v1.1.2) (2025-03-17)
+
+### Bug Fixes
+
+* added typings file ([ec96a31](https://github.com/Forsakringskassan/sass-module-importer/commit/ec96a31349ef5bcb3ca8c7e32a1c5a138e6d5202))
+
 ## [1.1.1](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.1.0...v1.1.1) (2025-03-13)
 
 ### Bug Fixes
