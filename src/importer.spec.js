@@ -31,6 +31,13 @@ it("should be able to transform scss using package without exports and main fiel
     expect(init(append)).toMatchSnapshot();
 });
 
+it("should be able to transform webpack like paths", () => {
+    const append = `
+        @use "~@forsakringskassan/a-fancy-package/src/default.scss";
+    `;
+    expect(init(append)).toMatchSnapshot();
+});
+
 it("should be able to transform scss using package with exports", () => {
     const append = `
         @use "@forsakringskassan/package-with-exports";

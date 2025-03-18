@@ -62,3 +62,14 @@ exports[`should be able to transform scss when package contains reference to its
   color: green;
 }"
 `;
+
+exports[`should be able to transform webpack like paths 1`] = `
+"html,
+body {
+  background-color: #12c344;
+}
+
+.foo {
+  color: green;
+}"
+`;
