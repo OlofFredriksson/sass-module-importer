@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.1.3](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.1.2...v1.1.3) (2025-03-21)
+
+### Bug Fixes
+
+* should be able to reference to itself ([2fc54d0](https://github.com/Forsakringskassan/sass-module-importer/commit/2fc54d026114207530720ec78789250b2e9da885))
+
 ## [1.1.2](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.1.1...v1.1.2) (2025-03-17)
 
 ### Bug Fixes
