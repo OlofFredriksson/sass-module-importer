@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should be able to import scss file with same name as package name 1`] = `
+"body {
+  background-color: blue;
+}
+
+.foo {
+  color: green;
+}"
+`;
+
 exports[`should be able to transform scss using package with exports 1`] = `
 "span {
   color: pink;
