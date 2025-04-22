@@ -31,6 +31,13 @@ it("should be able to transform scss using package without exports and main fiel
     expect(init(append)).toMatchSnapshot();
 });
 
+it("should be able to import scss file with same name as package name", () => {
+    const append = `
+        @use "get-css-variables/src/get-css-variables";
+    `;
+    expect(init(append)).toMatchSnapshot();
+});
+
 it("should be able to transform webpack like paths", () => {
     const append = `
         @use "~@forsakringskassan/a-fancy-package/src/default.scss";

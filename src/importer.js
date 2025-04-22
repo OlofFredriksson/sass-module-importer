@@ -24,7 +24,7 @@ export const moduleImporter = {
         }
 
         const packageName = getPackageNameFromPath(findUrl);
-        const filePath = findUrl.split(packageName)[1];
+        const filePath = findUrl.replace(packageName, "");
 
         /* Validate if packageName is valid */
         if (!packageName) {
