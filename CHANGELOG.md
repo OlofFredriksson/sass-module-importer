@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.1.4](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.1.3...v1.1.4) (2025-04-22)
+
+### Bug Fixes
+
+* should be able to include file with same name as package ([ebd8069](https://github.com/Forsakringskassan/sass-module-importer/commit/ebd80693a81fd3a58f94d685412d62c9e793d778))
+
 ## [1.1.3](https://github.com/Forsakringskassan/sass-module-importer/compare/v1.1.2...v1.1.3) (2025-03-21)
 
 ### Bug Fixes
